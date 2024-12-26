@@ -11,6 +11,15 @@ set -Eeuo pipefail
 : "${DISK_DISCARD:="on"}"         # Controls whether unmap (TRIM) commands are passed to the host.
 : "${DISK_ROTATION:="1"}"         # Rotation rate, set to 1 for SSD storage and increase for HDD
 
+
+# in the case of using armbian-qemu that have a image ready-to-use
+if [ -s $BIOS ] && [ -s $BOOT ]
+then 
+    DISK_OPTS+="-drive file="$BOOT",format=qcow2"
+    return 0
+fi
+
+
 fmt2ext() {
   local DISK_FMT=$1
 

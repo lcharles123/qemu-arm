@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 set -Eeuo pipefail
 
+# when using files of armbian-qemu:
+# not need to execute this script, 
+#  since just need to use the disk images
+[ -s $BIOS ] && [ -s $BOOT ] && return 0
+
 detectType() {
 
   local dir=""

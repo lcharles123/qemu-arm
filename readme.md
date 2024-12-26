@@ -48,6 +48,7 @@ Via Docker CLI:
 ```bash
 docker run -it --rm -e "BOOT=http://example.com/image.iso" -p 8006:8006 --device=/dev/kvm --device=/dev/net/tun --cap-add NET_ADMIN qemux/qemu-arm
 ```
+or use the provided Makefile
 
 Via Kubernetes:
 
@@ -69,7 +70,7 @@ kubectl apply -f https://raw.githubusercontent.com/qemus/qemu-arm/refs/heads/mas
 
   Very simple! These are the steps:
 
-  - Set the `BOOT` environment variable to the URL of any [disk image](#what-image-formats-are-supported) you want to install.
+  - Set the `BOOT` environment variable to the URL of any [disk image](#what-image-formats-are-supported) you want to install **or** for ready-to-use disks (i.e. Armbian qemu images), set BOOT and BIOS variables inside Makefile and use it.
 
   - Start the container and connect to [port 8006](http://localhost:8006) using your web browser.
 

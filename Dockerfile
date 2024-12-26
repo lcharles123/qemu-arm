@@ -55,5 +55,8 @@ ENV CPU_CORES="1"
 ENV RAM_SIZE="1G"
 ENV DISK_SIZE="16G"
 ENV BOOT="http://example.com/image.iso"
+# set BIOS to the mounted bios file inside container, i.e. /u-boot.bin
+# in this case, BOOT must be the OS image mounted inside container, i.e. /system.img.qcow2
+ENV BIOS=""
 
 ENTRYPOINT ["/usr/bin/tini", "-s", "/run/entry.sh"]
